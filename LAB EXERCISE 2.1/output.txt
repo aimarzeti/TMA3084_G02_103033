@@ -1,0 +1,5 @@
+Employee Name: Zeti
+Basic Salary: RM 4500.0
+Overtime Hours: 19.0
+Overtime Rate: RM 30.0
+Total Salary = RM 5070.0
