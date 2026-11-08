@@ -1,4 +1,6 @@
-import 'myLib.dart';
+import 'dart:io';
+
+import 'my_lib.dart';
 
 void main() {
   // Creating an employee object with values to achieve 5070.0 total salary
@@ -12,9 +14,9 @@ void main() {
 
   double totalSalary = emp.calculateTotalSalary();
 
-  print('Employee Name: ${emp.name}');
-  print('Basic Salary: RM ${emp.basicSalary}');
-  print('Overtime Hours: ${emp.overtimeHours}');
-  print('Overtime Rate: RM ${emp.overtimeRate}');
-  print('Total Salary = RM ${totalSalary}');
+  stdout.writeln('Employee Name: ${emp.name}');
+  stdout.writeln('Basic Salary: RM ${emp.basicSalary}');
+  stdout.writeln('Overtime Hours: RM ${emp.overtimeHours}');
+  stdout.writeln('Overtime Rate: RM ${emp.overtimeRate}');
+  stdout.writeln('Total Salary = RM $totalSalary');
 }
