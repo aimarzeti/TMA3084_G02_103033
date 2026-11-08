@@ -1,0 +1,33 @@
+name: Dart CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed main.dart
+
+      - name: Analyze project
+        run: dart analyze main.dart
+
+      - name: Smoke test pizza order
+        shell: bash
+        run: |
+          output="$(printf 'M\n2\nN\n' | dart run main.dart)"
+          printf '%s\n' "$output"
+          grep -Fq 'Size: M | Quantity: 2' <<< "$output"
+          grep -Fq 'Total Amount Due: RM 14' <<< "$output"
